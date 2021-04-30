@@ -1,0 +1,241 @@
+* {
+  box-sizing: border-box;
+  /*esto me permite tener */
+}
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background: #ff9966; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff5e62,
+    #ff9966
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ff5e62,
+    #ff9966
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: "IBM Plex Serif", serif;
+}
+
+.contenedor {
+  background-color: white;
+  min-height: calc(100vh - 20px);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 30px 0 30px;
+}
+
+nav {
+  background-color: #3f51b5;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  padding: 20px;
+}
+nav ul li:hover {
+  background-color: #1a2770;
+}
+nav ul a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+/*menu sencillo*/
+.sencillo ul {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.sencillo ul li {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 812px) {
+  .sencillo ul {
+    flex-direction: row;
+  }
+  .sencillo ul li {
+    margin-bottom: 0;
+  }
+}
+/*fin menu sencillo*/
+/*fin de menu sencillo*/
+/*menu con iconos */
+#iconos ul {
+  display: flex;
+  flex-direction: column;
+}
+#iconos li {
+  flex-grow: 1;
+}
+#iconos a {
+  display: flex;
+  /*separacion entre columnas*/
+  column-gap: 15px;
+  /*alina verticalmente*/
+  align-items: flex-start;
+  justify-content: center;
+}
+#iconos span {
+  display: block;
+  font-size: 14px;
+}
+
+@media (min-width: 648px) {
+  #iconos ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  #iconos li {
+    flex-wrap: wrap;
+    flex: 0 1 calc(50%);
+    /* flex-shrink:1; tiene que colorar a las cajas hijas/se va encaojer mas que el resto si es 0 la caja no se va encojer nunca y tomara el acho que se le dio y no se encojera y si es 1 es un poquito mas pequeño pero casi indetectable /o por defecto a la clase de todos los hijos */
+    /* flex-grow: 0;  por defecto viene en 0 y se tiene que colorar a las cajas hijas/o por defecto a la clase de todos los hijos */
+  }
+}
+
+@media (min-width: 812px) {
+  #iconos ul {
+    flex-wrap: nowrap;
+  }
+  #iconos li {
+    flex-wrap: nowrap;
+    flex: 0 1 calc(25%);
+    /* flex-shrink:1; tiene que colorar a las cajas hijas/se va encaojer mas que el resto si es 0 la caja no se va encojer nunca y tomara el acho que se le dio y no se encojera y si es 1 es un poquito mas pequeño pero casi indetectable /o por defecto a la clase de todos los hijos */
+    /* flex-grow: 0;  por defecto viene en 0 y se tiene que colorar a las cajas hijas/o por defecto a la clase de todos los hijos */
+  }
+}
+/*fin de can iconos*/
+
+/*Dropdown menu*/
+
+.dropdown ul {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 760px) {
+  .dropdown ul {
+    flex-direction: row;
+  }
+}
+.dropdown ul li {
+  display: flex;
+  justify-content: center;
+  /*para poner el submenu en la parte inferior*/
+  flex-direction: column;
+}
+@media screen and (min-width: 760px) {
+  .dropdown ul li {
+    position: relative;
+    display: flex;
+    /* ocupe toodo el ancho disponible */
+    flex: 1 1 100%;
+  }
+
+  /*---------------------------*/
+  .dropdown ul li ul li {
+    position: relative;
+    display: flex;
+    /* ocupe toodo el ancho disponible */
+    flex: 1 1 100%;
+  }
+  /* -------------------------- */
+
+  /*desde esta linea se modificara los hijos de los hijos*/
+  .dropdown ul li ul {
+    display: none;
+    /*para poder modificar su ubicacion en la secccion li*/
+    position: absolute;
+    /*esto permite que se coloque al 100% de top*/
+    top: 100%;
+    /*permite que no tenga espacios vacios en la  izquierda */
+    left: 0;
+    background-color: rgb(42, 52, 107);
+    flex-direction: column;
+  }
+  /* ---------------------------------- */
+  .dropdown ul li ul li .sgnivel {
+    display: none;
+    /*para poder modificar su ubicacion en la secccion li*/
+    position: absolute;
+    /*esto permite que se coloque al 100% de top*/
+    top: 0;
+    /*permite que no tenga espacios vacios en la  izquierda */
+    left: 100%;
+    background-color: rgb(42, 52, 107);
+    flex-direction: column;
+  }
+  /* ------------------------------------- */
+  .dropdown ul li ul li:hover ul {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+
+  /* -------------------------------- */
+  .dropdown ul li:hover ul {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+/*  FIN Dropdown menu*/
+
+/*Redes Sociales*/
+.sociales ul li span {
+  /*para quitar la etiqueta span*/
+  display: none;
+}
+.sociales ul {
+  display: flex;
+  justify-content: flex-end;
+  /* para que cuando quiera colapsar la fila, esta pase las cajas a la siguente fila */
+  flex-wrap: wrap;
+}
+
+/*estamos agregando antes "before " de a */
+.sociales ul li a::before {
+  /*estamos habilitando para poder utilizar los iconos de font awesome*/
+  font-family: "Font Awesome 5 Brands";
+}
+.sociales ul li a[href*="facebook.com"]::before {
+  content: "\f39e";
+}
+.sociales ul li a[href*="twitter.com"]::before {
+  content: "\f099";
+}
+.sociales ul li a[href*="youtube.com"]::before {
+  content: "\f167";
+}
+.sociales ul li a[href*="instagram.com"]::before {
+  content: "\f16d";
+}
+.sociales ul li a[href*="pinterest.com"]::before {
+  content: "\f0d2";
+}
+/*Fin de Redes Sociales*/
+/*Dropdown Menu con Redes Sociales*/
+
+
+.navegacion-social-dropdown {
+display: flex;
+justify-content: space-between;
+background-color: #3F51B5;
+}
+.navegacion-social-dropdown  .dropdown ul li{
+  flex: 1 1 auto;
+}
+.navegacion-social-dropdown  .dropdown ul li a{
+  font-size: 1.4rem;
+}
